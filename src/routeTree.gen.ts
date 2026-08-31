@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as SketchesSplatRouteImport } from './routes/sketches.$'
+import { Route as LearnSingularityRouteImport } from './routes/learn.singularity'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -22,30 +23,39 @@ const SketchesSplatRoute = SketchesSplatRouteImport.update({
   path: '/sketches/$',
   getParentRoute: () => rootRouteImport,
 } as any)
+const LearnSingularityRoute = LearnSingularityRouteImport.update({
+  id: '/learn/singularity',
+  path: '/learn/singularity',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/learn/singularity': typeof LearnSingularityRoute
   '/sketches/$': typeof SketchesSplatRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/learn/singularity': typeof LearnSingularityRoute
   '/sketches/$': typeof SketchesSplatRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/learn/singularity': typeof LearnSingularityRoute
   '/sketches/$': typeof SketchesSplatRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/sketches/$'
+  fullPaths: '/' | '/learn/singularity' | '/sketches/$'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/sketches/$'
-  id: '__root__' | '/' | '/sketches/$'
+  to: '/' | '/learn/singularity' | '/sketches/$'
+  id: '__root__' | '/' | '/learn/singularity' | '/sketches/$'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  LearnSingularityRoute: typeof LearnSingularityRoute
   SketchesSplatRoute: typeof SketchesSplatRoute
 }
 
@@ -65,11 +75,19 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SketchesSplatRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/learn/singularity': {
+      id: '/learn/singularity'
+      path: '/learn/singularity'
+      fullPath: '/learn/singularity'
+      preLoaderRoute: typeof LearnSingularityRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  LearnSingularityRoute: LearnSingularityRoute,
   SketchesSplatRoute: SketchesSplatRoute,
 }
 export const routeTree = rootRouteImport

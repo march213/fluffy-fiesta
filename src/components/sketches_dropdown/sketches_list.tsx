@@ -57,6 +57,7 @@ function getSketchDescription(name: string): string {
   const descriptions: Record<string, string> = {
     'flare-1': 'A gradient sketch with fractionated coordinates and vertical banding',
     'dawn-1': 'A gradient sketch tribute to Rik Oostenbroek with animated patterns',
+    'singularity-1': 'A glowing raymarched volume shaped by animated gyroid domain warping',
   }
 
   return descriptions[name] || 'A creative WebGPU sketch'
