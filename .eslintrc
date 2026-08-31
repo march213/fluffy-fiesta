@@ -1,0 +1,13 @@
+{
+  "plugins": ["eslint-plugin-react-compiler"],
+  "extends": ["eslint:recommended", "plugin:react/recommended", "prettier"],
+  "rules": {
+    "import/prefer-default-export": "off",
+    "no-console": "warn",
+    "no-var": "error",
+    "no-html-link-for-pages": "off",
+    "react/display-name": "off",
+    "@typescript-eslint/no-implicit-any": "off",
+    "react-compiler/react-compiler": "error",
+  },
+}
